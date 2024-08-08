@@ -5,14 +5,23 @@ function Ejercicio1() {
   const [formData, setFormData] = useState({ name: "", email: "" })
   const handleChange = (event) => {
     const { name, value } = event.target;
-    setFormData({
-      ...formData,
-      [name]: value
-    });
+    //Chequea, en el caso de que se cambie el nombre, de que...
+    //no empieze con un numero o contenga un caracter especial.
+    if (!(name == "name" && (/[^A-Za-z0-9]/.test(value)) || /^\d/.test(value))) {
+      setFormData({
+        ...formData,
+        [name]: value
+      });
+    }
   };
   const onClick = (event) => {
     event.preventDefault();
-    console.log(formData);
+    if (formData.name == "" || formData.email == "") {
+      console.log("No se inserto un nombre de usuario o email.")
+    }
+    else {
+      console.log(formData);
+    }
   }
   return (
     <>
