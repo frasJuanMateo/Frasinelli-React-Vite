@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import './App.css'
 
 function Ejercicio1() {
-  const [formData, setFormData] = useState({ name: "", email: "" })
+  const [formData, setFormData] = useState({})
   const handleChange = (event) => {
     const { name, value } = event.target;
     //Chequea, en el caso de que se cambie el nombre, de que...
@@ -16,7 +16,7 @@ function Ejercicio1() {
   };
   const onClick = (event) => {
     event.preventDefault();
-    if (formData.name == "" || formData.email == "") {
+    if (formData.name == null || formData.email == null) {
       console.log("No se inserto un nombre de usuario o email.")
     }
     else {
