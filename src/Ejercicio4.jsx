@@ -52,7 +52,7 @@ function Ejercicio3() {
       {loadingFlag && <img src={loadingIcon} style={{width: "90px", height: "90px"}}></img>}
       {!loadingFlag &&
       <>
-        
+        <NavBar />
         <input type="text" name='search' onChange={onChange}/><br />
         <select name="category" onChange={onChange}>
           {categories.map((category, index) => <option key={index}>{category}</option>)}

@@ -3,11 +3,11 @@ import '../App.css'
 
 function NavBar() {
   return (
-    <ul key={productData.id} style={{listStyle: "none",margin: "0",padding: "0"}}>
-        <li><a>Home</a></li>
-        <li><a>News</a></li>
-        <li><a>Contact</a></li>
-        <li><a>About</a></li>
+    <ul style={{listStyle: "none",margin: "0",padding: "0"}}>
+        <li style={{float: "left", margin: "20px"}}><a>Home</a></li>
+        <li style={{float: "left", margin: "20px"}}><a>News</a></li>
+        <li style={{float: "left", margin: "20px"}}><a>Contact</a></li>
+        <li style={{float: "left", margin: "20px"}}><a>About</a></li>
     </ul>
   )
 }
