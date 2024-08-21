@@ -15,7 +15,7 @@ function Ejercicio5() {
       if (event.target.name == "search") {setSearch(event.target.value);}
       if (event.target.name == "category") {
         if(event.target.value == "all") {setFilteredList(products);}
-        if(event.target.value == "favorites") {setFilteredList(favoriteList);}
+        else if(event.target.value == "favorites") {setFilteredList(favoriteList);}
         else {setFilteredList(products.filter(product => product.category == event.target.value));}
       }
     } 
