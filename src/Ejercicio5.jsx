@@ -2,18 +2,20 @@ import { useState, useEffect } from 'react'
 import './App.css'
 import loadingIcon from "./assets/loading-image.gif"
 import NavBar from './components/NavBar.jsx'
-import ProductCard from './components/ProductCard.jsx'
+import ProductCardFav from './components/ProductCardFav.jsx'
 
-function Ejercicio4() {
+function Ejercicio5() {
     const [loadingFlag, setLoadingFlag] = useState(true);
     const [products, setProducts] = useState([]);
     const [filteredList, setFilteredList] = useState([]);
+    const [favoriteList, setFavoriteList] = useState([]);
     const [search, setSearch] = useState("");
     const [categories, setCategories] = useState([  ]);
     const onChange = (event) => {
       if (event.target.name == "search") {setSearch(event.target.value);}
       if (event.target.name == "category") {
         if(event.target.value == "all") {setFilteredList(products);}
+        if(event.target.value == "favorites") {setFilteredList(favoriteList);}
         else {setFilteredList(products.filter(product => product.category == event.target.value));}
       }
     } 
@@ -38,15 +40,14 @@ function Ejercicio4() {
     }, []);
 
     useEffect(() => {
-      let array = ["all", ...products.map(product => product.category)];
+      let array = ["all", "favorites", ...products.map(product => product.category)];
       array = array.filter((val, id, array) => {
         return array.indexOf(val) == id;  
      });
      setCategories(array)
   }, [products]);
-    
-
-  return (
+    console.log(favoriteList);
+    return (
     <>
     
       {loadingFlag && <img src={loadingIcon} style={{width: "90px", height: "90px"}}></img>}
@@ -60,11 +61,11 @@ function Ejercicio4() {
 
         <h3>Lista de Productos:</h3>
         
-        <ul>{filteredList.filter(product => search == "" ? true : product.title.toLowerCase().startsWith(search)).map(item => <ProductCard id={item.id} title={item.title} category={item.category} price={item.price} />)}</ul>
+        <ul>{filteredList.filter(product => search == "" ? true : product.title.toLowerCase().startsWith(search)).map(item => <ProductCardFav item={item} id={item.id} title={item.title} category={item.category} price={item.price} favoriteList={favoriteList} setFavoriteList={setFavoriteList}/>)}</ul>
       </>
       }
     </>
   )
 }
 
-export default Ejercicio4
+export default Ejercicio5
